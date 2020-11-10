@@ -1,4 +1,53 @@
 package com.medibooking.bookingserviceserver.services;
 
+
+import com.medibooking.bookingserviceserver.dtos.doctor.DoctorGetDto;
+import com.medibooking.bookingserviceserver.dtos.doctor.DoctorPostDto;
+import com.medibooking.bookingserviceserver.dtos.doctor.DoctorPutDto;
+import com.medibooking.bookingserviceserver.entities.Doctor;
+import com.medibooking.bookingserviceserver.mappers.DoctorMapper;
+import com.medibooking.bookingserviceserver.repositories.DoctorRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import javax.print.Doc;
+import java.util.List;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
 public class DoctorService {
+
+    private final DoctorRepository doctorRepository;
+    private final DoctorMapper doctorMapper;
+
+    public DoctorGetDto create(DoctorPostDto doctorPostDto) {
+
+        Doctor doctorEntity =  doctorMapper.toEntity(doctorPostDto);
+        return doctorMapper.fromEntity(doctorRepository.save(doctorEntity));
+    }
+
+    public DoctorGetDto modify(UUID doctorId, DoctorPutDto doctorPutDto){
+        Doctor doctor = new Doctor();
+        doctorMapper.copy(doctorPutDto, doctor);
+        doctor.setId(doctorId);
+        return doctorMapper.fromEntity(doctorRepository.save(doctor));
+    }
+
+    public List<Doctor> getAllDoctors() {
+
+        return doctorRepository.findAll();
+    }
+
+    public void delete(UUID id) {
+        doctorRepository.deleteById(id);
+    }
+
+    public DoctorGetDto findDoctorById(UUID id){
+        return doctorMapper.fromEntity(doctorRepository.getOne(id));
+    }
+
+    public DoctorGetDto findDoctorByUserName(String userName) {
+        return doctorMapper.fromEntity(doctorRepository.findByUserName(userName));
+    }
 }
