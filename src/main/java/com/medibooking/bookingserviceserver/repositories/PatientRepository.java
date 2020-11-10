@@ -1,5 +1,12 @@
 package com.medibooking.bookingserviceserver.repositories;
 
+import com.medibooking.bookingserviceserver.entities.Patient;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
 public interface
-PatientRepository {
+PatientRepository extends JpaRepository<Patient, UUID> {
+    Patient findByFirstName(String firstName);
+
 }
