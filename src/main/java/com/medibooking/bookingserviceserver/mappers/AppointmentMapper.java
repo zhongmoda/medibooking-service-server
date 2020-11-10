@@ -13,7 +13,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface AppointmentMapper {
-
+    
     Appointment toEntity(AppointmentPostDto appointmentPostDto);
     AppointmentGetDto fromEntity(Appointment appointment);
     List<AppointmentGetDto> fromEntities(List<Appointment> appointments);

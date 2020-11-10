@@ -24,7 +24,7 @@ public class AppointmentGetDto {
 
     private String isCancelled;
 
-    private Patient patient;
+    private Long patient;
 
-    private Doctor doctor;
+    private Long doctor;
 }
