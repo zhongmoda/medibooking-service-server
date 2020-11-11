@@ -12,19 +12,18 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "doctor")
+@Table(name = "doctors")
 public class Doctor {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type="uuid-binary")
-    private UUID id;
+    @GeneratedValue
+    @Column(name = "doctor_id")
+    private Long id;
 
     @Column(name = "first_name", unique = false, nullable = false)
     private String firstName;
 
-    @Column(name = "second_name", unique = false, nullable = false)
-    private String secondName;
+    @Column(name = "last_name", unique = false, nullable = false)
+    private String lastName;
 
     @Column(name = "user_name", unique = true, nullable = true)
     private String userName;

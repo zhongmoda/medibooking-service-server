@@ -27,7 +27,7 @@ public class DoctorService {
         return doctorMapper.fromEntity(doctorRepository.save(doctorEntity));
     }
 
-    public DoctorGetDto modify(UUID doctorId, DoctorPutDto doctorPutDto){
+    public DoctorGetDto modify(Long doctorId, DoctorPutDto doctorPutDto){
         Doctor doctor = new Doctor();
         doctorMapper.copy(doctorPutDto, doctor);
         doctor.setId(doctorId);
@@ -39,11 +39,11 @@ public class DoctorService {
         return doctorRepository.findAll();
     }
 
-    public void delete(UUID id) {
+    public void delete(Long id) {
         doctorRepository.deleteById(id);
     }
 
-    public DoctorGetDto findDoctorById(UUID id){
+    public DoctorGetDto findDoctorById(Long id){
         return doctorMapper.fromEntity(doctorRepository.getOne(id));
     }
 

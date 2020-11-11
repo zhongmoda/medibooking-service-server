@@ -32,7 +32,7 @@ public class DoctorController {
     }
 
     @GetMapping("/{doctorId}")
-    public ResponseEntity<DoctorGetDto> findById(@PathVariable UUID doctorId){
+    public ResponseEntity<DoctorGetDto> findById(@PathVariable Long doctorId){
         return ResponseEntity.ok(doctorService.findDoctorById(doctorId));
     }
 
@@ -42,12 +42,12 @@ public class DoctorController {
     }
 
     @PutMapping("/{doctorId}")
-    public ResponseEntity<DoctorGetDto> update(@PathVariable UUID doctorId, @RequestBody DoctorPutDto doctorPutDto){
+    public ResponseEntity<DoctorGetDto> update(@PathVariable Long doctorId, @RequestBody DoctorPutDto doctorPutDto){
         return ResponseEntity.ok(doctorService.modify(doctorId, doctorPutDto));
     }
 
     @DeleteMapping("/{doctorId}")
-    public ResponseEntity delete (@PathVariable UUID doctorId){
+    public ResponseEntity delete (@PathVariable Long doctorId){
         doctorService.delete(doctorId);
         return ResponseEntity.ok().build();
     }

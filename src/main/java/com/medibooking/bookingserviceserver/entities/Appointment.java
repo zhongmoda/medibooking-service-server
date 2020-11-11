@@ -1,5 +1,6 @@
 package com.medibooking.bookingserviceserver.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,16 +19,19 @@ public class Appointment {
     private Long id;
 
     @Column(name = "appointment_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private LocalDate date;
 
     @Column(name = "start_time")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH.mm")
     private LocalTime startTime;
 
     @Column(name = "end_time")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH.mm")
     private LocalTime endTime;
 
     @Column(name = "appointment_type")
-    private String type;
+    private String appointmentType;
 
     @Column(name = "is_cancelled")
     private String isCancelled;

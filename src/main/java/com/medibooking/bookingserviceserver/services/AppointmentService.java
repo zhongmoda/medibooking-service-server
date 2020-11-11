@@ -35,6 +35,10 @@ public class AppointmentService {
         appointmentRepository.deleteById(id);
     }
 
+    public List<AppointmentGetDto> getAll() {
+        return appointmentMapper.fromEntities(appointmentRepository.findAll());
+    }
+
     public AppointmentGetDto findAppointmentById(Long id){
         return appointmentMapper.fromEntity(appointmentRepository.getOne(id));
     }

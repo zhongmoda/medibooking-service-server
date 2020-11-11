@@ -24,7 +24,7 @@ public class PatientService {
         return patientMapper.fromEntity(patientRepository.save(patientEntity));
     }
 
-    public PatientGetDto modify(UUID patientId, PatientPutDto patientPutDto) {
+    public PatientGetDto modify(Long patientId, PatientPutDto patientPutDto) {
         Patient patient = new Patient();
         patientMapper.copy(patientPutDto, patient);
         patient.setId(patientId);
@@ -35,7 +35,7 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public PatientGetDto findPatientById(UUID id){
+    public PatientGetDto findPatientById(Long id){
         return patientMapper.fromEntity(patientRepository.getOne(id));
     }
 
@@ -43,7 +43,7 @@ public class PatientService {
         return patientMapper.fromEntity(patientRepository.findByFirstName(name));
     }
 
-    public void delete(UUID id) {
+    public void delete(Long id) {
         patientRepository.deleteById(id);
     }
 }

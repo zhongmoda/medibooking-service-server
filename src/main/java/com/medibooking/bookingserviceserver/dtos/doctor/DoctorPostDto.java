@@ -6,7 +6,7 @@ import java.util.UUID;
 @Data
 public class DoctorPostDto {
     private String firstName;
-    private String secondName;
+    private String lastName;
     private String userName;
     private String password;
 }

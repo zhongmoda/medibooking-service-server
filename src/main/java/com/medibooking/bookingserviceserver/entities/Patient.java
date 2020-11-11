@@ -11,13 +11,12 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "patient")
+@Table(name = "patients")
 public class Patient {
     @Id
-    @GeneratedValue(generator = "uuid2")
-    @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Type(type="uuid-binary")
-    private UUID id;
+    @GeneratedValue
+    @Column(name = "patient_id")
+    private Long id;
 
     @Column(name = "age")
     private int age;
@@ -31,7 +30,7 @@ public class Patient {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "username",  nullable = false)
+    @Column(name = "user_name",  nullable = false)
     private String userName;
 
     @Column(name = "password", nullable = false)

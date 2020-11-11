@@ -6,7 +6,7 @@ import java.util.UUID;
 
 @Data
 public class PatientPutDto {
-    private UUID id;
+    private Long id;
     private int age;
     private String gender;
     private String firstName;

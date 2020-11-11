@@ -36,7 +36,13 @@ public class AppointmentController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping(value = "/search", params ="appointmentId")
+    @GetMapping
+    public ResponseEntity<List<AppointmentGetDto>> getAll() {
+        List<AppointmentGetDto> appointmentList = appointmentService.getAll();
+        return ResponseEntity.ok(appointmentList);
+    }
+
+    @GetMapping("/{appointmentId}")
     public ResponseEntity<AppointmentGetDto> findById(@PathVariable Long appointmentId){
         return ResponseEntity.ok(appointmentService.findAppointmentById(appointmentId));
     }
@@ -56,7 +62,7 @@ public class AppointmentController {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfAPatientByDate(patientId, date));
     }
 
-    @GetMapping(value = "/search", params ="doctorId")
+    @GetMapping(value = "/search", params ={"doctorId","date"})
     public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@PathVariable Long doctorId, LocalDate date){
         return ResponseEntity.ok(appointmentService.findAppointmentsOfADoctorByDate(doctorId, date));
     }
