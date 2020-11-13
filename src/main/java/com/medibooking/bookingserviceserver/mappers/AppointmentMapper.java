@@ -13,16 +13,19 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface AppointmentMapper {
-    @Mapping( target = "patient.id", source = "patient" )
-    @Mapping( target = "doctor.id", source = "doctor" )
+    @Mapping(target = "patient.id", source = "patient")
+    @Mapping(target = "doctor.id", source = "doctor")
     Appointment toEntity(AppointmentPostDto appointmentPostDto);
-    @Mapping( target = "patient", source = "patient.id" )
-    @Mapping( target = "doctor", source = "doctor.id" )
+
+    @Mapping(target = "patient", source = "patient.id")
+    @Mapping(target = "doctor", source = "doctor.id")
     AppointmentGetDto fromEntity(Appointment appointment);
-    @Mapping( target = "patient", source = "patient.id" )
-    @Mapping( target = "doctor", source = "doctor.id" )
+
+    @Mapping(target = "patient", source = "patient.id")
+    @Mapping(target = "doctor", source = "doctor.id")
     List<AppointmentGetDto> fromEntities(List<Appointment> appointments);
-    @Mapping( target = "patient.id", source = "patient" )
-    @Mapping( target = "doctor.id", source = "doctor" )
+
+    @Mapping(target = "patient.id", source = "patient")
+    @Mapping(target = "doctor.id", source = "doctor")
     void copy(AppointmentPutDto appointmentPutDto, @MappingTarget Appointment appointment);
 }

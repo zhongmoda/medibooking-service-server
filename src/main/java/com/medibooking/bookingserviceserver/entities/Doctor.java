@@ -1,13 +1,10 @@
 package com.medibooking.bookingserviceserver.entities;
 
-
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -30,5 +27,17 @@ public class Doctor {
 
     @Column(name = "password", nullable = true)
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "doctors_languages",
+            joinColumns = @JoinColumn(name = "language_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
+    private Set<Language> languages;
+
+    @ManyToMany
+    @JoinTable(name = "doctors_specializations",
+            joinColumns = @JoinColumn(name = "specialization_id"),
+            inverseJoinColumns = @JoinColumn(name = "doctor_id"))
+    private Set<Specialization> specializations;
 
 }

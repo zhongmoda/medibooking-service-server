@@ -1,7 +1,7 @@
 package com.medibooking.bookingserviceserver.controllers;
 
 import java.util.List;
-import java.util.UUID;
+
 import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationGetDto;
 import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationPostDto;
 import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationPutDto;
@@ -17,33 +17,33 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-@RequestMapping("/specialization")
+@RequestMapping("/specializations")
 public class SpecializationController {
     @Autowired
-    private SpecializationService speService;
+    private SpecializationService specializationService;
 
     @PostMapping
-    public ResponseEntity<SpecializationGetDto> add(@RequestBody SpecializationPostDto spePostDto){
-        SpecializationGetDto speGetDto = speService.createSpe(spePostDto);
-
+    public ResponseEntity<SpecializationGetDto> add(@RequestBody SpecializationPostDto spePostDto) {
+        SpecializationGetDto speGetDto = specializationService.createSpe(spePostDto);
         return ResponseEntity.ok(speGetDto);
     }
 
     @GetMapping
-    public ResponseEntity<List<Specialization>> find(){
-        List<Specialization> list=speService.getAllSpe();
+    public ResponseEntity<List<Specialization>> find() {
+        List<Specialization> list = specializationService.getAllSpe();
         return ResponseEntity.ok(list);
     }
 
-    @PutMapping("/{speId}")
-    public ResponseEntity<SpecializationGetDto> update(@PathVariable Long speId, @RequestBody SpecializationPutDto spePutDto){
-        return ResponseEntity.ok(speService.modify(speId, spePutDto));
+    @PutMapping("/{specializationId}")
+    public ResponseEntity<SpecializationGetDto> update(@PathVariable Long specializationId, @RequestBody SpecializationPutDto spePutDto) {
+        return ResponseEntity.ok(specializationService.modify(specializationId, spePutDto));
     }
 
-    @DeleteMapping("/{speId}")
-    public ResponseEntity delete(@PathVariable Long speId) {
-        speService.delete(speId);
+    @DeleteMapping("/{specializationId}")
+    public ResponseEntity delete(@PathVariable Long specializationId) {
+        specializationService.delete(specializationId);
         return ResponseEntity.ok().build();
     }
 }

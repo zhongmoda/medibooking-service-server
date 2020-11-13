@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +34,7 @@ public class PatientService {
         return patientRepository.findAll();
     }
 
-    public PatientGetDto findPatientById(Long id){
+    public PatientGetDto findPatientById(Long id) {
         return patientMapper.fromEntity(patientRepository.getOne(id));
     }
 

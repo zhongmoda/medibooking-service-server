@@ -1,7 +1,6 @@
 package com.medibooking.bookingserviceserver.dtos.doctor;
 
 import lombok.Data;
-import java.util.UUID;
 
 @Data
 public class DoctorPostDto {

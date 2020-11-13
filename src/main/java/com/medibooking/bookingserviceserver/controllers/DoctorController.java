@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,13 +25,13 @@ public class DoctorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Doctor>> find(){
+    public ResponseEntity<List<Doctor>> find() {
         List<Doctor> list = doctorService.getAllDoctors();
         return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{doctorId}")
-    public ResponseEntity<DoctorGetDto> findById(@PathVariable Long doctorId){
+    public ResponseEntity<DoctorGetDto> findById(@PathVariable Long doctorId) {
         return ResponseEntity.ok(doctorService.findDoctorById(doctorId));
     }
 
@@ -42,12 +41,12 @@ public class DoctorController {
     }
 
     @PutMapping("/{doctorId}")
-    public ResponseEntity<DoctorGetDto> update(@PathVariable Long doctorId, @RequestBody DoctorPutDto doctorPutDto){
+    public ResponseEntity<DoctorGetDto> update(@PathVariable Long doctorId, @RequestBody DoctorPutDto doctorPutDto) {
         return ResponseEntity.ok(doctorService.modify(doctorId, doctorPutDto));
     }
 
     @DeleteMapping("/{doctorId}")
-    public ResponseEntity delete (@PathVariable Long doctorId){
+    public ResponseEntity delete(@PathVariable Long doctorId) {
         doctorService.delete(doctorId);
         return ResponseEntity.ok().build();
     }

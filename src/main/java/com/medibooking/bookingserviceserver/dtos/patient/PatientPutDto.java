@@ -2,8 +2,6 @@ package com.medibooking.bookingserviceserver.dtos.patient;
 
 import lombok.Data;
 
-import java.util.UUID;
-
 @Data
 public class PatientPutDto {
     private Long id;

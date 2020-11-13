@@ -19,19 +19,19 @@ public class AppointmentController {
     private AppointmentService appointmentService;
 
     @PostMapping
-    public ResponseEntity<AppointmentGetDto> add(@RequestBody AppointmentPostDto appointmentPostDto){
-        AppointmentGetDto appointmentGetDto =  appointmentService.createAppointment(appointmentPostDto);
+    public ResponseEntity<AppointmentGetDto> add(@RequestBody AppointmentPostDto appointmentPostDto) {
+        AppointmentGetDto appointmentGetDto = appointmentService.createAppointment(appointmentPostDto);
         return ResponseEntity.ok(appointmentGetDto);
     }
 
     @PutMapping("/{appointmentId}")
-    public ResponseEntity<AppointmentGetDto> modify(@PathVariable Long appointmentId, @RequestBody AppointmentPutDto appointmentPutDto){
+    public ResponseEntity<AppointmentGetDto> modify(@PathVariable Long appointmentId, @RequestBody AppointmentPutDto appointmentPutDto) {
         AppointmentGetDto appointmentGetDto = appointmentService.modifyAppointment(appointmentId, appointmentPutDto);
         return ResponseEntity.ok(appointmentGetDto);
     }
 
     @DeleteMapping("/{appointmentId}")
-    public ResponseEntity delete(@PathVariable Long appointmentId){
+    public ResponseEntity delete(@PathVariable Long appointmentId) {
         appointmentService.deleteAppointment(appointmentId);
         return ResponseEntity.ok().build();
     }
@@ -43,29 +43,27 @@ public class AppointmentController {
     }
 
     @GetMapping("/{appointmentId}")
-    public ResponseEntity<AppointmentGetDto> findById(@PathVariable Long appointmentId){
+    public ResponseEntity<AppointmentGetDto> findById(@PathVariable Long appointmentId) {
         return ResponseEntity.ok(appointmentService.findAppointmentById(appointmentId));
     }
 
-    @GetMapping(value = "/search", params ="patientId")
-    public ResponseEntity<List<AppointmentGetDto>> findByPatient(@PathVariable Long patientId){
+    @GetMapping(value = "/search", params = "patientId")
+    public ResponseEntity<List<AppointmentGetDto>> findByPatient(@PathVariable Long patientId) {
         return ResponseEntity.ok(appointmentService.findAppointmentsByPatient(patientId));
     }
 
-    @GetMapping(value = "/search", params ="doctorId")
-    public ResponseEntity<List<AppointmentGetDto>> findByDoctor(@PathVariable Long doctorId){
+    @GetMapping(value = "/search", params = "doctorId")
+    public ResponseEntity<List<AppointmentGetDto>> findByDoctor(@PathVariable Long doctorId) {
         return ResponseEntity.ok(appointmentService.findAppointmentsByDoctor(doctorId));
     }
 
-    @GetMapping(value = "/search", params = {"patientId","date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@PathVariable Long patientId, LocalDate date){
+    @GetMapping(value = "/search", params = {"patientId", "date"})
+    public ResponseEntity<List<AppointmentGetDto>> findByPatientAndDate(@PathVariable Long patientId, LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfAPatientByDate(patientId, date));
     }
 
-    @GetMapping(value = "/search", params ={"doctorId","date"})
-    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@PathVariable Long doctorId, LocalDate date){
+    @GetMapping(value = "/search", params = {"doctorId", "date"})
+    public ResponseEntity<List<AppointmentGetDto>> findByDoctorAndDate(@PathVariable Long doctorId, LocalDate date) {
         return ResponseEntity.ok(appointmentService.findAppointmentsOfADoctorByDate(doctorId, date));
     }
-
-
 }

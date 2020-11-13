@@ -17,10 +17,10 @@ public class Language {
     private Long id;
 
     @Column(name = "language_name")
-    private String name;
+    private String languageName;
 
     @ManyToMany
-    @JoinTable(name = "doctor_language",
+    @JoinTable(name = "doctors_languages",
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private Set<Doctor> doctors;

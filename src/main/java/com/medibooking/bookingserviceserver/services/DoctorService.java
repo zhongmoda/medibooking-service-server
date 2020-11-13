@@ -10,9 +10,7 @@ import com.medibooking.bookingserviceserver.repositories.DoctorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,11 +21,11 @@ public class DoctorService {
 
     public DoctorGetDto create(DoctorPostDto doctorPostDto) {
 
-        Doctor doctorEntity =  doctorMapper.toEntity(doctorPostDto);
+        Doctor doctorEntity = doctorMapper.toEntity(doctorPostDto);
         return doctorMapper.fromEntity(doctorRepository.save(doctorEntity));
     }
 
-    public DoctorGetDto modify(Long doctorId, DoctorPutDto doctorPutDto){
+    public DoctorGetDto modify(Long doctorId, DoctorPutDto doctorPutDto) {
         Doctor doctor = new Doctor();
         doctorMapper.copy(doctorPutDto, doctor);
         doctor.setId(doctorId);
@@ -43,7 +41,7 @@ public class DoctorService {
         doctorRepository.deleteById(id);
     }
 
-    public DoctorGetDto findDoctorById(Long id){
+    public DoctorGetDto findDoctorById(Long id) {
         return doctorMapper.fromEntity(doctorRepository.getOne(id));
     }
 

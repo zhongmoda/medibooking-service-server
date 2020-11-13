@@ -16,12 +16,12 @@ public class LanguageController {
     private final LanguageService languageService;
 
     @GetMapping
-    public ResponseEntity<List<LanguageGetDto>> getAllLanguages(){
+    public ResponseEntity<List<LanguageGetDto>> getAllLanguages() {
         return ResponseEntity.ok(languageService.getAllLanguages());
     }
 
     @PostMapping
-    public ResponseEntity<LanguageGetDto> createLanguage(@RequestBody LanguagePostDto languagePostDto){
+    public ResponseEntity<LanguageGetDto> createLanguage(@RequestBody LanguagePostDto languagePostDto) {
         LanguageGetDto languageGetDto = languageService.createLanguage(languagePostDto);
         return ResponseEntity.ok(languageGetDto);
     }

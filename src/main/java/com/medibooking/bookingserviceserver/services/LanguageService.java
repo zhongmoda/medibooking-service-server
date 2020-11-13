@@ -17,13 +17,13 @@ public class LanguageService {
     private final LanguageRepository languageRepository;
     private final LanguageMapper languageMapper;
 
-    public List<LanguageGetDto> getAllLanguages(){
+    public List<LanguageGetDto> getAllLanguages() {
         return languageRepository.findAll().stream()
                 .map(language -> languageMapper.fromEntity(language))
                 .collect(Collectors.toList());
     }
 
-    public LanguageGetDto createLanguage(LanguagePostDto languagePostDto){
+    public LanguageGetDto createLanguage(LanguagePostDto languagePostDto) {
         Language language = languageMapper.toEntity(languagePostDto);
         languageRepository.save(language);
 

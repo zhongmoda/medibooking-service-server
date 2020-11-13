@@ -2,11 +2,8 @@ package com.medibooking.bookingserviceserver.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -30,7 +27,7 @@ public class Patient {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "user_name",  nullable = false)
+    @Column(name = "user_name", nullable = false)
     private String userName;
 
     @Column(name = "password", nullable = false)

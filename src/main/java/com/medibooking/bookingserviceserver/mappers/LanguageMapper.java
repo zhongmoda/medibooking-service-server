@@ -11,6 +11,8 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface LanguageMapper {
     Language toEntity(LanguagePostDto languagePostDto);
+
     LanguageGetDto fromEntity(Language language);
+
     void copy(LanguagePutDto languagePutDto, @MappingTarget Language language);
 }
