@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "patients")
-public class Patient {
+public class Patient extends User {
     @Id
     @GeneratedValue
     @Column(name = "patient_id")
@@ -26,11 +26,5 @@ public class Patient {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(name = "user_name", nullable = false)
-    private String userName;
-
-    @Column(name = "password", nullable = false)
-    private String password;
 
 }

@@ -26,8 +26,8 @@ public class Appointment {
     @Column(name = "end_time")
     private LocalTime endTime;
 
-    @Column(name = "appointment_type")
-    private String appointmentType;
+    @Column(name = "appointment_message")
+    private String appointmentMessage;
 
     @Column(name = "is_cancelled")
     private String isCancelled;

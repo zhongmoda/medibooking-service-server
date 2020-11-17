@@ -10,23 +10,23 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "doctors")
-public class Doctor {
+public class Doctor extends User {
     @Id
     @GeneratedValue
     @Column(name = "doctor_id")
     private Long id;
+
+    @Column(name = "age")
+    private int age;
+
+    @Column(name = "gender")
+    private String gender;
 
     @Column(name = "first_name", unique = false, nullable = false)
     private String firstName;
 
     @Column(name = "last_name", unique = false, nullable = false)
     private String lastName;
-
-    @Column(name = "user_name", unique = true, nullable = true)
-    private String userName;
-
-    @Column(name = "password", nullable = true)
-    private String password;
 
     @ManyToMany
     @JoinTable(name = "doctors_languages",
