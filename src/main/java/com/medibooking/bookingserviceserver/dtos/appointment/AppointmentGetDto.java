@@ -13,7 +13,7 @@ public class AppointmentGetDto {
     private LocalDate date;
     private LocalTime startTime;
     private LocalTime endTime;
-    private String appointmentType;
+    private String appointmentMessage;
     private String isCancelled;
     private Long patient;
     private Long doctor;

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Table(name = "patients")
-public class Patient extends User {
+public class Patient {
     @Id
     @GeneratedValue
     @Column(name = "patient_id")
@@ -26,5 +26,9 @@ public class Patient extends User {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "account_id")
+    private PatientAccount patientAccount;
 
 }

@@ -19,7 +19,7 @@ public class AppointmentPostDto {
     //  pattern = "HH:mm:ss"
     @DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
     private LocalTime endTime;
-    private String appointmentType;
+    private String appointmentMessage;
     private String isCancelled;
     private Long patient;
     private Long doctor;

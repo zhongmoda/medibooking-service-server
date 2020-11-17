@@ -10,7 +10,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Table(name = "doctors")
-public class Doctor extends User {
+public class Doctor {
     @Id
     @GeneratedValue
     @Column(name = "doctor_id")
@@ -27,6 +27,10 @@ public class Doctor extends User {
 
     @Column(name = "last_name", unique = false, nullable = false)
     private String lastName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "account_id", referencedColumnName = "account_id")
+    private DoctorAccount doctorAccount;
 
     @ManyToMany
     @JoinTable(name = "doctors_languages",

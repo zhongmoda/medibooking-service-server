@@ -9,6 +9,4 @@ public class PatientPutDto {
     private String gender;
     private String firstName;
     private String lastName;
-    private String userName;
-    private String password;
 }

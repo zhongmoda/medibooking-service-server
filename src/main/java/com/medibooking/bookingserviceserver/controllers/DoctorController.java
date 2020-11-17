@@ -36,8 +36,8 @@ public class DoctorController {
     }
 
     @GetMapping("search")
-    public ResponseEntity<DoctorGetDto> findByUserName(@RequestParam String doctorUserName) {
-        return ResponseEntity.ok(doctorService.findDoctorByUserName(doctorUserName));
+    public ResponseEntity<DoctorGetDto> findByUserName(@RequestParam Long doctorId) {
+        return ResponseEntity.ok(doctorService.findDoctorById(doctorId));
     }
 
     @PutMapping("/{doctorId}")

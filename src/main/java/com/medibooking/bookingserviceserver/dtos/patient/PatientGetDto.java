@@ -9,5 +9,4 @@ public class PatientGetDto {
     private String gender;
     private String firstName;
     private String lastName;
-    private String userName;
 }

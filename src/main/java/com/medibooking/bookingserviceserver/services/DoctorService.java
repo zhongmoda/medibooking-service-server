@@ -45,7 +45,4 @@ public class DoctorService {
         return doctorMapper.fromEntity(doctorRepository.getOne(id));
     }
 
-    public DoctorGetDto findDoctorByUserName(String userName) {
-        return doctorMapper.fromEntity(doctorRepository.findByUserName(userName));
-    }
 }
