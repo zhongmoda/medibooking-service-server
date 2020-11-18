@@ -29,6 +29,6 @@ public class Patient {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    private PatientAccount patientAccount;
+    private Account account;
 
 }

@@ -30,7 +30,7 @@ public class Doctor {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "account_id")
-    private DoctorAccount doctorAccount;
+    private Account account;
 
     @ManyToMany
     @JoinTable(name = "doctors_languages",

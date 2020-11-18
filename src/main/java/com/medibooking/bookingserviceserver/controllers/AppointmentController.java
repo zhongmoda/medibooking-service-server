@@ -6,6 +6,7 @@ import com.medibooking.bookingserviceserver.dtos.appointment.AppointmentPutDto;
 import com.medibooking.bookingserviceserver.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -37,6 +38,7 @@ public class AppointmentController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_DOCTOR','ROLE_PATIENT')")
     public ResponseEntity<List<AppointmentGetDto>> getAll() {
         List<AppointmentGetDto> appointmentList = appointmentService.getAll();
         return ResponseEntity.ok(appointmentList);

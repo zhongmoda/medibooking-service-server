@@ -9,8 +9,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "patient_accounts")
-public class PatientAccount {
+@Table(name = "accounts")
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id", updatable = false, nullable = false)
@@ -22,13 +22,16 @@ public class PatientAccount {
     @Column(name = "encoded_password", nullable = false)
     private String encodedPassword;
 
-//    @ManyToMany
-//    @JoinTable(name = "users_authorities",
-//            joinColumns = @JoinColumn(name = "account_id"),
-//            inverseJoinColumns = @JoinColumn(name = "authority_id"))
-//    private Set<Authority> authorities;
+    @ManyToMany
+    @JoinTable(name = "users_authorities",
+            joinColumns = @JoinColumn(name = "account_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id"))
+    private Set<Authority> authorities;
 
-    @OneToOne(mappedBy = "patientAccount")
+    @OneToOne(mappedBy = "account")
     private Patient patient;
+
+    @OneToOne(mappedBy = "account")
+    private Doctor doctor;
 
 }
