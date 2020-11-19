@@ -22,7 +22,7 @@ public class Authority {
     private String permission;
 
     @ManyToMany
-    @JoinTable(name = "users_authorities",
+    @JoinTable(name = "accounts_authorities",
             joinColumns = @JoinColumn(name = "authority_id"),
             inverseJoinColumns = @JoinColumn(name = "account_id"))
     private Set<Account> accounts;

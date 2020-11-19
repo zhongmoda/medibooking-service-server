@@ -23,7 +23,7 @@ public class Account {
     private String encodedPassword;
 
     @ManyToMany
-    @JoinTable(name = "users_authorities",
+    @JoinTable(name = "accounts_authorities",
             joinColumns = @JoinColumn(name = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id"))
     private Set<Authority> authorities;
