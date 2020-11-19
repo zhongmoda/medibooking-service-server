@@ -12,7 +12,7 @@ import java.util.Set;
 @Table(name = "specializations")
 public class Specialization {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "specialization_id", unique = true, nullable = false)
     private Long id;
 
