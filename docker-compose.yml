@@ -9,10 +9,15 @@ services:
       - 8080
     ports:
       - 8080:8080
-    env_file:
-      - .env
     depends_on:
       - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db-postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=mysecretpassword
+      - SPRING_FLYWAY_URL=jdbc:postgresql://db-postgres:5432/postgres
+      - SPRING_FLYWAY_USER=postgres
+      - SPRING_FLYWAY_PASSWORD=mysecretpassword
   postgres:
     image: postgres:latest
     container_name: postgres
