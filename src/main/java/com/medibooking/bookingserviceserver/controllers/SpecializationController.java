@@ -7,8 +7,11 @@ import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationPo
 import com.medibooking.bookingserviceserver.dtos.specialization.SpecializationPutDto;
 import com.medibooking.bookingserviceserver.entities.Specialization;
 import com.medibooking.bookingserviceserver.services.SpecializationService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,17 +23,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/specializations")
+@RequiredArgsConstructor
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SpecializationController {
-    @Autowired
-    private SpecializationService specializationService;
+
+    private final SpecializationService specializationService;
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_PATIENT')")
     public ResponseEntity<SpecializationGetDto> add(@RequestBody SpecializationPostDto spePostDto) {
         SpecializationGetDto speGetDto = specializationService.createSpe(spePostDto);
         return ResponseEntity.ok(speGetDto);
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_PATIENT')")
     public ResponseEntity<List<Specialization>> find() {
         List<Specialization> list = specializationService.getAllSpe();
         return ResponseEntity.ok(list);

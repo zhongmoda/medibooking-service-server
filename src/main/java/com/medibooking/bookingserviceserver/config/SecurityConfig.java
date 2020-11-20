@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final SecretKey secretKey;
     private final JwtConfig jwtConfig;
 
-    @Override
     @SneakyThrows
     protected void configure(HttpSecurity http){
         http
@@ -38,13 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new JwtUsernameAndPasswordAuthFilter(authenticationManager(), jwtConfig, secretKey))
                 .addFilterAfter(new JwtTokenVerifier(secretKey, jwtConfig), JwtUsernameAndPasswordAuthFilter.class)
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/actuator/*").permitAll()
-                .antMatchers("/management/appointments").permitAll()
-                .antMatchers("/management/accounts").permitAll()
-                .antMatchers("/management/accounts/*").permitAll()
-                .antMatchers("/doctors").permitAll()
-                .antMatchers("/patients").permitAll()
-                .antMatchers("/specializations").hasRole("DOCTOR")
+                .antMatchers("/", "/actuator/*").permitAll()
                 .anyRequest()
                 .authenticated();
     }
